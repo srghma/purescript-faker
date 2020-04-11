@@ -10,5 +10,7 @@ pkgs.mkShell {
     nodejs
     purescript
     spago
+    ruby
+    ruby.gems.pry
   ];
 }
