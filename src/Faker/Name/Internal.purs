@@ -1222,7 +1222,7 @@ male_first_name =
   , "Zack"
   , "Zackary"
   , "Zane"
-]
+  ]
 
 female_first_name :: Array String
 female_first_name =
@@ -5497,7 +5497,7 @@ female_first_name =
   , "Zula"
   , "Zulema"
   , "Zulma"
-]
+  ]
 
 last_name :: Array String
 last_name =
@@ -5974,7 +5974,7 @@ last_name =
   , "Ziemann"
   , "Zieme"
   , "Zulauf"
-]
+  ]
 
 prefix :: Array String
 prefix =
@@ -5983,7 +5983,7 @@ prefix =
   , "Ms."
   , "Miss"
   , "Dr."
-]
+  ]
 
 suffix :: Array String
 suffix =
@@ -5998,4 +5998,4 @@ suffix =
   , "DDS"
   , "PhD"
   , "DVM"
-]
+  ]

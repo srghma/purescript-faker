@@ -17,7 +17,7 @@ def write_list o, key, vals
   vals.zip(pres).each do |x, pre|
     o.puts "  #{pre} \"#{x}\""
   end
-  o.puts "]"
+  o.puts "  ]"
 end
 
 @dst = "src/Faker/Name/Internal.purs"
