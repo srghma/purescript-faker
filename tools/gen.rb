@@ -2,6 +2,7 @@ require "faker"
 require "fileutils"
 require "active_support"
 require "active_support/core_ext"
+require_relative "code"
 
 class Parser
   attr_reader :in, :out, :buf
@@ -33,10 +34,12 @@ class Processor
 
   def initialize mod
     @mod = mod
+    @imports = Hash.new { |hash, key| hash[key] = Set.new }
+    @glossaries = {}
   end
 
   def keys
-    @keys ||= Faker::Base.translate("faker.#{mod}").keys
+    @keys ||= Faker::Base.translate("faker.#{mod}").keys.map(&:to_s)
   end
 
 
@@ -44,25 +47,40 @@ class Processor
     !!(item =~ %r(\#{.+}))
   end
 
+  def generate_instance key, items
+    type = key.camelize
+    body =
+      if items.any?(&self.method(:template?))
+        generate_template(key, items)
+      else
+        @glossaries[key] = items
+        generate_sample(key, items)
+      end
+    @imports["Faker"] << "class Faker"
+    Code.new(nil, [
+      "newtype #{type} = #{type} String",
+      Code.new("instance faker#{type} :: Faker #{type} where", [body])
+    ])
+  end
+
   def generate_sample key, items
     type = key.camelize
-    # puts items
-    yield "newtype #{type} = #{type} String"
-    yield "instance faker#{type} :: Faker #{type} where"
-    yield "  fake = #{type} <$> sample #{key}"
+    @imports["Faker"] << "sample"
+    "fake = #{type} <$> sample #{key}"
   end
 
   def generate_template key, items
     type = key.camelize
-    # puts items
-    yield "newtype #{type} = #{type} String"
-    yield "instance faker#{type} :: Faker #{type} where"
-    yield "  fake = do"
-    yield "    randomInt 0 #{items.length - 1} >>= case _ of"
-    items.each_with_index do |item, i|
-      yield "      #{i == items.length - 1 ? "_" : i} -> do"
-      generate_case(type, item) { |x| yield x }
-    end
+    @imports["Effect.Random"] << "randomInt"
+    Code.new("fake = do", [
+      Code.new("randomInt 0 #{items.length - 1} >>= case _ of",
+        items.each_with_index.map do |item, i|
+          Code.new("#{i == items.length - 1 ? "_" : i} -> do",
+            generate_case(type, item)
+          )
+        end
+      )
+    ])
   end
 
   def generate_case type, item
@@ -74,18 +92,16 @@ class Processor
       key.to_sym
     end
 
-    xs.each do |k, v|
-      yield "        #{v.camelize} #{k} <- fake"
-    end
-    line = parser.out.inject([]) { |acc, x|
-      if x.is_a? Symbol
-        acc << x.to_s
-      else
-        acc << x.inspect
+    @imports["Faker"] << "fake"
+    Enumerator.new do |y|
+      xs.each do |k, v|
+        y << "#{v.camelize} #{k} <- fake"
       end
-      acc
-    }.join(" <> ")
-    yield "        pure $ #{type} $ #{line}"
+      line = parser.out.map { |x|
+        x.is_a?(Symbol) ? x.to_s : x.inspect
+      }.join(" <> ")
+      y << "pure $ #{type} $ #{line}"
+    end
   end
 
   def dst
@@ -93,80 +109,71 @@ class Processor
   end
 
   def header
-    <<EOS
-module Faker.#{mod.camelize} where
-
-import Prelude
-
-import Effect.Random (randomInt)
-import Faker (class Faker, fake, sample)
-
-EOS
+    Code.new(nil, [
+      "module Faker.#{mod.camelize} where",
+      "",
+      "import Prelude",
+      "",
+      *@imports.map { |mod, xs| "import #{mod} (#{xs.sort.join(', ')})" }.sort,
+      "",
+    ])
   end
 
   def run
-    @internal = {}
+    code = Code.new
+    keys.each do |key|
+      items = Faker::Base.translate("faker.#{mod}.#{key}")
+      code.children << Code.new("")
+      code.children << generate_instance(key, items)
+    end
+
+    code.children << Code.new("")
+    @glossaries.each do |k, items|
+      code.children << Code.new("")
+      code.children << generate_list(k, items)
+    end
+
+    code.children.unshift header
     FileUtils.mkdir_p File.dirname(dst)
     open(dst, "w") do |io|
-      io.puts header
-      keys.each do |key|
-        key = key.to_s
-        items = Faker::Base.translate("faker.#{mod}.#{key}")
-
-        if items.any?(&self.method(:template?))
-          io.puts
-          generate_template key, items, &io.method(:puts)
-        else
-          io.puts
-          generate_sample key, items, &io.method(:puts)
-          @internal[key] = items
-        end
-      end
-
-
-      io.puts
-      @internal.each do |k, items|
-        io.puts
-        generate_list k, items, &io.method(:puts)
-      end
+      io.puts code.format
     end
   end
 
   def generate_list key, vals
     pres = Enumerator.new do |y|
       y << "["
-      loop do
-        y << ","
-      end
+      loop { y << "," }
     end
 
-    yield "#{key} :: Array String"
-    yield "#{key} ="
-
-    vals.zip(pres).each do |x, pre|
-      yield "  #{pre} \"#{x}\""
-    end
-    yield "  ]"
+    Code.new(nil, [
+      "#{key} :: Array String",
+      Code.new("#{key} =",
+        [*vals.zip(pres).map { |x, pre| "#{pre} \"#{x}\"" }, "]"]
+      ),
+    ])
   end
 end
 
 
 cannot_generate = %w(
-  separator source coffee id_number country_code vehicle book educator
+  coffee separator source book country_code educator id_number vehicle
 )
 
 cannot_compile = %w(
-  university team superhero twin_peaks star_wars restaurant opera invoice internet house heroes_of_the_storm games finance dune creature compass company address app bank chiquito
-  chuck_norris commerce relationship rupaul simpsons silicon_valley stripe one_piece sword_art_online v_for_vendetta lorem world_cup
+  address app bank chiquito chuck_norris commerce company compass creature dune
+  finance games heroes_of_the_storm house internet invoice lorem one_piece opera
+  relationship restaurant rupaul silicon_valley simpsons star_wars stripe
+  superhero sword_art_online team twin_peaks university v_for_vendetta world_cup
 )
 
 mods = Faker::Base.translate("faker").keys.map(&:to_s)
 excepts = cannot_generate + cannot_compile
 mods.each do |mod|
   if excepts.include? mod
-    puts "skip #{mod}"
+    puts "      skip #{mod}"
   else
-    puts "generate #{mod}"
+    puts "  generate #{mod}"
     Processor.new(mod).run
   end
 end
