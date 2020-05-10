@@ -3,13 +3,13 @@ class Code
 
   def initialize line = nil, children = []
     @line = line
-    @children = children.map { |l|
-      l.is_a?(String) ? Code.new(l) : l
-    }
+    @children = children
   end
 
   def format indent = 2
-    lines = @children.map { |c| c.format(indent) }.inject([], :+)
+    lines = @children
+      .map { |c| c.is_a?(String) ? [c] : c.format(indent)}
+      .inject([], :+)
     if @line
       [@line, *lines.map { |l| (' ' * indent) + l }]
     else

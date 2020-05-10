@@ -3,55 +3,42 @@ module Test.Main where
 import Prelude
 
 import Control.Safely (replicateM_)
+import Data.List.Lazy as List
 import Effect (Effect)
 import Effect.Class.Console (log)
+import Effect.Random (randomInt)
 import Faker (fake)
-import Faker.Name (FemaleFirstName(..), FirstName(..), MaleFirstName(..), Name(..), NameWithMiddle(..))
-import Faker.Beer as Beer
-import Faker.Yoda as Yoda
+import Faker.Lorem as Lorem
+import Faker.Name as Name
 
 main :: Effect Unit
 main = do
-  log "* MaleFirstName"
-  replicateM_ 5 do
-    MaleFirstName x <- fake
-    log x
-
-  log ""
-  log "* FemaleFirstName"
-  replicateM_ 5 do
-    FemaleFirstName x <- fake
-    log x
-
-  log ""
-  log "* FirstName"
-  replicateM_ 5 do
-    FirstName x <- fake
-    log x
-
   log ""
   log "* Name"
   replicateM_ 5 do
-    Name x <- fake
+    Name.Name x <- fake
     log x
 
   log ""
   log "* NameWithMiddle"
   replicateM_ 5 do
-    NameWithMiddle x <- fake
+    Name.NameWithMiddle x <- fake
     log x
 
   log ""
-  log "* Beer Brand"
+  log "* Lorem"
   replicateM_ 5 do
-    Beer.Brand x <- fake
-    log x
+    n <- randomInt 5 10
+    sentence <- List.replicateM n do
+      randomInt 0 1 >>= case _ of
+        0 -> do
+          Lorem.Words x <- fake
+          pure x
+        _ -> do
+          Lorem.Supplemental x <- fake
+          pure x
+    log $ List.intercalate " " sentence <> "."
 
-  log ""
-  log "* Yoda Quotes"
-  replicateM_ 5 do
-    Yoda.Quotes x <- fake
-    log x
 
   log ""
   log "done."
