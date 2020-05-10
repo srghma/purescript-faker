@@ -9,6 +9,78 @@ newtype Country = Country String
 instance fakerCountry :: Faker Country where
   fake = Country <$> sample country
 
+newtype RegionsBrazil = RegionsBrazil String
+instance fakerRegionsBrazil :: Faker RegionsBrazil where
+  fake = RegionsBrazil <$> sample regions_brazil
+
+newtype RegionsColombia = RegionsColombia String
+instance fakerRegionsColombia :: Faker RegionsColombia where
+  fake = RegionsColombia <$> sample regions_colombia
+
+newtype RegionsSumatra = RegionsSumatra String
+instance fakerRegionsSumatra :: Faker RegionsSumatra where
+  fake = RegionsSumatra <$> sample regions_sumatra
+
+newtype RegionsEthiopia = RegionsEthiopia String
+instance fakerRegionsEthiopia :: Faker RegionsEthiopia where
+  fake = RegionsEthiopia <$> sample regions_ethiopia
+
+newtype RegionsHonduras = RegionsHonduras String
+instance fakerRegionsHonduras :: Faker RegionsHonduras where
+  fake = RegionsHonduras <$> sample regions_honduras
+
+newtype RegionsKenya = RegionsKenya String
+instance fakerRegionsKenya :: Faker RegionsKenya where
+  fake = RegionsKenya <$> sample regions_kenya
+
+newtype RegionsUganda = RegionsUganda String
+instance fakerRegionsUganda :: Faker RegionsUganda where
+  fake = RegionsUganda <$> sample regions_uganda
+
+newtype RegionsMexico = RegionsMexico String
+instance fakerRegionsMexico :: Faker RegionsMexico where
+  fake = RegionsMexico <$> sample regions_mexico
+
+newtype RegionsGuatemala = RegionsGuatemala String
+instance fakerRegionsGuatemala :: Faker RegionsGuatemala where
+  fake = RegionsGuatemala <$> sample regions_guatemala
+
+newtype RegionsNicaragua = RegionsNicaragua String
+instance fakerRegionsNicaragua :: Faker RegionsNicaragua where
+  fake = RegionsNicaragua <$> sample regions_nicaragua
+
+newtype RegionsCostaRica = RegionsCostaRica String
+instance fakerRegionsCostaRica :: Faker RegionsCostaRica where
+  fake = RegionsCostaRica <$> sample regions_costa_rica
+
+newtype RegionsTanzania = RegionsTanzania String
+instance fakerRegionsTanzania :: Faker RegionsTanzania where
+  fake = RegionsTanzania <$> sample regions_tanzania
+
+newtype RegionsElSalvador = RegionsElSalvador String
+instance fakerRegionsElSalvador :: Faker RegionsElSalvador where
+  fake = RegionsElSalvador <$> sample regions_el_salvador
+
+newtype RegionsRwanda = RegionsRwanda String
+instance fakerRegionsRwanda :: Faker RegionsRwanda where
+  fake = RegionsRwanda <$> sample regions_rwanda
+
+newtype RegionsBurundi = RegionsBurundi String
+instance fakerRegionsBurundi :: Faker RegionsBurundi where
+  fake = RegionsBurundi <$> sample regions_burundi
+
+newtype RegionsPanama = RegionsPanama String
+instance fakerRegionsPanama :: Faker RegionsPanama where
+  fake = RegionsPanama <$> sample regions_panama
+
+newtype RegionsYemen = RegionsYemen String
+instance fakerRegionsYemen :: Faker RegionsYemen where
+  fake = RegionsYemen <$> sample regions_yemen
+
+newtype RegionsIndia = RegionsIndia String
+instance fakerRegionsIndia :: Faker RegionsIndia where
+  fake = RegionsIndia <$> sample regions_india
+
 newtype Variety = Variety String
 instance fakerVariety :: Faker Variety where
   fake = Variety <$> sample variety
@@ -54,6 +126,203 @@ country =
   , "Panama"
   , "Yemen"
   , "India"
+  ]
+
+regions_brazil :: Array String
+regions_brazil =
+  [ "Sul Minas"
+  , "Mogiana"
+  , "Cerrado"
+  ]
+
+regions_colombia :: Array String
+regions_colombia =
+  [ "Nariño"
+  , "Huila"
+  , "Tolima"
+  , "Cauca"
+  , "Casanare"
+  , "Santander"
+  , "Antioquia"
+  , "Cundinamarca"
+  , "Boyacá"
+  ]
+
+regions_sumatra :: Array String
+regions_sumatra =
+  [ "Tapanuli"
+  , "Lintong"
+  , "Aceh"
+  , "Lake Tawar"
+  , "Lintong"
+  , "Gayo"
+  ]
+
+regions_ethiopia :: Array String
+regions_ethiopia =
+  [ "Sidama"
+  , "Harrar"
+  , "Limu"
+  , "Ojimmah"
+  , "Lekempti"
+  , "Wellega"
+  , "Gimbi"
+  ]
+
+regions_honduras :: Array String
+regions_honduras =
+  [ "Agalta"
+  , "Comayagua"
+  , "Copan"
+  , "Montecillos"
+  , "Opalca"
+  , "El Paraiso"
+  ]
+
+regions_kenya :: Array String
+regions_kenya =
+  [ "Bungoma"
+  , "Embu"
+  , "Kiamba"
+  , "Kirinyaga"
+  , "Mt. Kenya"
+  , "Kisii"
+  , "Meru"
+  , "Murang'a"
+  , "Machakos"
+  , "Thika"
+  , "Nyeri"
+  , "Nakuru"
+  , "Nyanza"
+  , "Kericho"
+  ]
+
+regions_uganda :: Array String
+regions_uganda =
+  [ "Bugisu"
+  , "Mount Elgon"
+  , "Kibale"
+  ]
+
+regions_mexico :: Array String
+regions_mexico =
+  [ "Chiapas"
+  , "Oaxaca"
+  , "Veracruz"
+  , "Colima"
+  , "San Luis Potosi"
+  , "Nayarit"
+  , "Hidalgo"
+  , "Puebla"
+  , "Jalisco"
+  ]
+
+regions_guatemala :: Array String
+regions_guatemala =
+  [ "Acatenango"
+  , "Antigua"
+  , "Atitlan"
+  , "Fraijanes"
+  , "Huehuetenango"
+  , "Nuevo Oriente"
+  , "Coban"
+  , "San Marcos"
+  ]
+
+regions_nicaragua :: Array String
+regions_nicaragua =
+  [ "Matagalpa"
+  , "Jinotega"
+  , "Boaco"
+  , "Madriz"
+  , "Nueva Segovia"
+  , "Estelí"
+  , "Dipilto"
+  , "Jalapa"
+  , "Carazo"
+  , "Granada"
+  , "Masaya"
+  , "Managua"
+  , "Rivas"
+  ]
+
+regions_costa_rica :: Array String
+regions_costa_rica =
+  [ "Tarrazu"
+  , "Central Valley"
+  , "West Valley"
+  , "Guanacaste"
+  , "Tres Rios"
+  , "Turrialba"
+  , "Orosi"
+  , "Brunca"
+  ]
+
+regions_tanzania :: Array String
+regions_tanzania =
+  [ "Western Region, Bukova"
+  , "Western Region, Kigoma"
+  , "Mbeya Region"
+  , "Southern Region, Mbinga"
+  , "Western Region, Tarime"
+  , "Northern Region, Oldeani"
+  , "Northern Region, Arusha"
+  , "Northern Region, Kilimanjaro"
+  , "Southern Region, Morogoro"
+  ]
+
+regions_el_salvador :: Array String
+regions_el_salvador =
+  [ "Alotepec-Metapán"
+  , "Apaneca-Ilamatepec"
+  , "El Balsamo-Quetzaltepec"
+  , "Cacahuatique"
+  , "Chichontepec"
+  , "Tecapa-Chinameca"
+  ]
+
+regions_rwanda :: Array String
+regions_rwanda =
+  [ "Rulindo"
+  , "Gishamwana Coffee Island"
+  , "Lake Kivu Region"
+  , "Kigeyo Washing Station"
+  , "Kabirizi"
+  ]
+
+regions_burundi :: Array String
+regions_burundi =
+  [ "Kayanza"
+  ]
+
+regions_panama :: Array String
+regions_panama =
+  [ "Boquete"
+  , "Chiriqui"
+  , "Volcan"
+  ]
+
+regions_yemen :: Array String
+regions_yemen =
+  [ "Mattari"
+  , "San'ani"
+  , "Hirazi"
+  , "Raimi"
+  ]
+
+regions_india :: Array String
+regions_india =
+  [ "Chikmagalur"
+  , "Coorg"
+  , "Biligiris"
+  , "Bababudangiris"
+  , "Manjarabad"
+  , "Nilgiris"
+  , "Travancore"
+  , "Manjarabad"
+  , "Brahmaputra"
+  , "Pulneys"
+  , "Sheveroys"
   ]
 
 variety :: Array String

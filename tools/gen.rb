@@ -22,7 +22,7 @@ class Parser
       @buf = @buf[m.end(0)..]
     end
     unless @buf.empty?
-      @out << @buf[0 ... m.begin(0)]
+      @out << @buf
     end
     @buf = nil
   end
@@ -43,8 +43,29 @@ class Processor
     @glossaries = {}
   end
 
-  def keys
-    @keys ||= Faker::Base.translate("faker.#{mod}").keys.map(&:to_s)
+  def table
+    @table ||=
+      begin
+        to_key = -> xs { xs.drop(2).join('_').gsub(/-/, '_').gsub(/ +/, '') }
+        f = -> xs {
+          path = xs.join('.')
+          Faker::Base.translate(path).keys.map(&:to_s).map { |k|
+            case (items = Faker::Base.translate("#{path}.#{k}"))
+            when Array
+              if (items_ = items.flatten).all? { |x| x.is_a?(String) }
+                [[to_key.([*xs, k]), items_]]
+              end
+            when Hash
+              if items.values.all? { |x| x.is_a?(Array) && x.one? && x[0].is_a?(String) }
+                [[to_key.([*xs, k]), items.values.flatten]]
+              else
+                f.([*xs, k]).compact.inject([], :+)
+              end
+            end
+          }
+        }
+        f.(["faker", mod]).compact.inject([], :+).to_h
+      end
   end
 
 
@@ -99,19 +120,31 @@ class Processor
     parser = Parser.new item
     xs = {}
     parser.parse do |m|
-      key = "v#{xs.length + 1}"
-      xs[key] = m
-      key.to_sym
+      if m =~ /^\d+$/
+        '#' * m.to_i
+      else
+        key = "v#{xs.length + 1}"
+        xs[key] = m
+        key.to_sym
+      end
     end
 
     @imports["Faker"] << "fake"
     Enumerator.new do |y|
       xs.each do |k, v|
-        mod, dot, t = v.rpartition('.')
-        unless mod.empty?
-          @imports["Faker.#{mod} as #{mod}"]
-        end
-        y << "#{mod + dot + t.camelize} #{k} <- fake"
+        mod_, t = v.split('.', 2)
+        cons =
+          if !t.nil?
+            if mod_.downcase != mod
+              @imports["Faker.#{mod_} as #{mod_}"]
+              mod_ + '.' + t.camelize
+            else
+              t.gsub(/\./, '_').camelize
+            end
+          else
+            v.camelize
+          end
+        y << "#{cons} #{k} <- fake"
       end
       line = parser.out.map { |x|
         x.is_a?(Symbol) ? x.to_s : x.inspect
@@ -151,13 +184,8 @@ class Processor
 
   def run
     code = Code.new
-    keys.each do |key|
-      items = Faker::Base.translate("faker.#{mod}.#{key}")
-      if items.is_a?(Array) && items.flatten.all? { |x| x.is_a? String }
-        code.children << "" << generate_instance(key, items.flatten)
-      elsif items.is_a?(Hash) && items.values.all? { |x| x.is_a?(Array) && x.one? && x[0].is_a?(String) }
-        code.children << "" << generate_instance(key, items.values.flatten)
-      end
+    table.each do |key, items|
+      code.children << "" << generate_instance(key, items)
     end
 
     code.children << ""
@@ -174,29 +202,24 @@ class Processor
 end
 
 
-cannot_generate = %w(
-  separator country_code educator
+non_modules = %w(
+  separator country_code
 )
 
-cannot_compile = %w(
-  address
-  chiquito
-  chuck_norris
-  compass
-  creature
-  finance
-  games
-  invoice
-  opera
-  star_wars
-  stripe
-  superhero
-  team
-  university
-)
+cannot_compile = [
+  "address",                    # ? zip_code
+  "compass",                    # ? cardinal
+  "finance",                    # numbers in key
+  "games",                      # too many items
+  "invoice",                    # no output
+  "star_wars",                  # ? call_squadron
+  "stripe",                     # no output
+  "team",                       # depends on address
+  "university"                  # depends on address
+]
 
-mods = Faker::Base.translate("faker").keys.map(&:to_s)
-excepts = cannot_generate + cannot_compile
+mods = Faker::Base.translate("faker").keys.map(&:to_s) - non_modules
+excepts = cannot_compile
 mods.each do |mod|
   if excepts.include? mod
     puts "      skip #{mod}"
