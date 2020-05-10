@@ -2,8 +2,7 @@ module Faker.Marketing where
 
 import Prelude
 
-import Effect.Random (randomInt)
-import Faker (class Faker, fake, sample)
+import Faker (class Faker, sample)
 
 
 newtype Buzzwords = Buzzwords String
