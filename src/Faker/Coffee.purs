@@ -604,7 +604,6 @@ name_2 =
   , "Level"
   , "Enlightenment"
   , "Cowboy"
-  , ""
   , "Choice"
   , "Select"
   , "Equinox"

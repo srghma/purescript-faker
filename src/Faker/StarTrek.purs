@@ -64,7 +64,7 @@ character =
   , "Montgomery Scott"
   , "Hikaru Sulu"
   , "Pavel Chekov"
-  , "Nyota Uhuru"
+  , "Nyota Uhura"
   ]
 
 location :: Array String

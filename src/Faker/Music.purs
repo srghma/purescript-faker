@@ -21,6 +21,22 @@ newtype Genres = Genres String
 instance fakerGenres :: Faker Genres where
   fake = Genres <$> sample genres
 
+newtype MamboNo5 = MamboNo5 String
+instance fakerMamboNo5 :: Faker MamboNo5 where
+  fake = MamboNo5 <$> sample mambo_no_5
+
+newtype HiphopSubgenres = HiphopSubgenres String
+instance fakerHiphopSubgenres :: Faker HiphopSubgenres where
+  fake = HiphopSubgenres <$> sample hiphop_subgenres
+
+newtype HiphopGroups = HiphopGroups String
+instance fakerHiphopGroups :: Faker HiphopGroups where
+  fake = HiphopGroups <$> sample hiphop_groups
+
+newtype HiphopArtist = HiphopArtist String
+instance fakerHiphopArtist :: Faker HiphopArtist where
+  fake = HiphopArtist <$> sample hiphop_artist
+
 
 instruments :: Array String
 instruments =
@@ -341,4 +357,167 @@ genres =
   , "Blues"
   , "Non Music"
   , "Rap"
+  ]
+
+mambo_no_5 :: Array String
+mambo_no_5 =
+  [ "Angela"
+  , "Pamela"
+  , "Sandra"
+  , "Rita"
+  , "Monica"
+  , "Erica"
+  , "Tina"
+  , "Mary"
+  , "Jessica"
+  ]
+
+hiphop_subgenres :: Array String
+hiphop_subgenres =
+  [ "Low Fi"
+  , "Grime"
+  , "Drill"
+  , "Alternative"
+  , "Country"
+  , "Undeground"
+  , "West Coast"
+  , "East Coast"
+  , "Conscious"
+  , "Christian"
+  , "Gangsta"
+  , "Old School"
+  , "Southern"
+  , "Mid West"
+  , "Trap"
+  , "Boom Bap"
+  , "Melodic"
+  ]
+
+hiphop_groups :: Array String
+hiphop_groups =
+  [ "Outcast"
+  , "Griselda"
+  , "Wu-Tang Clan"
+  , "YMCMB"
+  , "Maybach Music"
+  , "Bad Boyz"
+  , "Rock Nation"
+  , "Jack Boys"
+  , "OVO"
+  , "Tribe Call Quest"
+  , "Cypress Hill"
+  , "Digital Undeground"
+  , "Naughty By Nature"
+  , "EPMD"
+  , "Run D.M.C"
+  , "N.W.A"
+  , "Salt & Pepa"
+  , "TLC"
+  , "G Unit"
+  , "Bone Thugs & Harmony"
+  , "Destiny's Child"
+  , "Public Enemy"
+  , "Mobb Deep"
+  , "Eric B. & Rakim"
+  , "Fugees"
+  , "The Sugarhill Gang"
+  , "D12"
+  , "Three 6 Mafia"
+  , "Migos"
+  , "Clipse"
+  , "Odd Future"
+  , "2 Live Crew"
+  , "The Lox"
+  , "Dipset"
+  ]
+
+hiphop_artist :: Array String
+hiphop_artist =
+  [ "Drake"
+  , "Jay-Z"
+  , "Lil Wayne"
+  , "Travis Scott"
+  , "Ice Cube"
+  , "Wutang Clan"
+  , "Tribe Called Quest"
+  , "Nas"
+  , "Foxy Brown"
+  , "TI"
+  , "TPain"
+  , "Big Krit"
+  , "Joey BadA$$"
+  , "A$AP Rocky"
+  , "Tyler The Creator"
+  , "Frank Ocean"
+  , "50 Cent"
+  , "Snoop Dogg"
+  , "Wiz Khalifa"
+  , "Tupac"
+  , "The Notorious B.I.G"
+  , "Missy Elliot"
+  , "DMX"
+  , "Eminem"
+  , "Method Man"
+  , "Red Man"
+  , "Kanye West"
+  , "Gucci Mane"
+  , "Baby Keem"
+  , "Roddy Ricch"
+  , "Nipsey Hussle"
+  , "Queen Latifah"
+  , "Pusha T"
+  , "Chief Keef"
+  , "Lil Reese"
+  , "Lil Peep"
+  , "Lil Snupe"
+  , "Meek Mill"
+  , "Wale"
+  , "Busta Rhymes"
+  , "Ludacris"
+  , "Ashanti"
+  , "Shy Glizzy"
+  , "Fredo Santana"
+  , "Fat Joe"
+  , "Don Toliver"
+  , "Sheck Wes"
+  , "Bobby Smurda"
+  , "Dave East"
+  , "J Holiday"
+  , "Chris Brown"
+  , "Omarion"
+  , "Fabulous"
+  , "Jadakiss"
+  , "Nicki Minaj"
+  , "Meg The Stallion"
+  , "Saweetie"
+  , "Larry June"
+  , "Quavo"
+  , "Offset"
+  , "Takeoff"
+  , "Stormzy"
+  , "xxxTentacion"
+  , "Juice Wrld"
+  , "Juicy J"
+  , "P Diddy"
+  , "Young Thug"
+  , "Gunna"
+  , "Lil Tecca"
+  , "Da Baby"
+  , "Lil Baby"
+  , "Lil Uzi"
+  , "21 Savage"
+  , "2 Chainz"
+  , "Craig Mac"
+  , "Cardi B"
+  , "Chance The Rapper"
+  , "Mac Miller"
+  , "The Game"
+  , "Styles P"
+  , "Paul Wall"
+  , "Cam'ron"
+  , "Jeezy"
+  , "Dr. Dre"
+  , "Nate Dogg"
+  , "Kurupt"
+  , "Twista"
   ]

@@ -9,9 +9,9 @@ newtype Characters = Characters String
 instance fakerCharacters :: Faker Characters where
   fake = Characters <$> sample characters
 
-newtype Celebrities = Celebrities String
-instance fakerCelebrities :: Faker Celebrities where
-  fake = Celebrities <$> sample celebrities
+newtype Actors = Actors String
+instance fakerActors :: Faker Actors where
+  fake = Actors <$> sample actors
 
 newtype Quotes = Quotes String
 instance fakerQuotes :: Faker Quotes where
@@ -43,8 +43,8 @@ characters =
   , "Judge Carl Robertson"
   ]
 
-celebrities :: Array String
-celebrities =
+actors :: Array String
+actors =
   [ "Quincy Jones"
   , "Jay Leno"
   , "Ronald Reagan"

@@ -14,6 +14,10 @@ newtype FemaleFirstName = FemaleFirstName String
 instance fakerFemaleFirstName :: Faker FemaleFirstName where
   fake = FemaleFirstName <$> sample female_first_name
 
+newtype NeutralFirstName = NeutralFirstName String
+instance fakerNeutralFirstName :: Faker NeutralFirstName where
+  fake = NeutralFirstName <$> sample neutral_first_name
+
 newtype FirstName = FirstName String
 instance fakerFirstName :: Faker FirstName where
   fake = do
@@ -574,7 +578,6 @@ male_first_name =
   , "Gaston"
   , "Gavin"
   , "Gayle"
-  , "Gaylord"
   , "Genaro"
   , "Gene"
   , "Geoffrey"
@@ -5605,6 +5608,76 @@ female_first_name =
   , "Zulma"
   ]
 
+neutral_first_name :: Array String
+neutral_first_name =
+  [ "Alexis"
+  , "Ari"
+  , "Armani"
+  , "Avery"
+  , "Azariah"
+  , "Baylor"
+  , "Bellamy"
+  , "Blake"
+  , "Briar"
+  , "Brooklyn"
+  , "Cameron"
+  , "Campbell"
+  , "Casey"
+  , "Charlie"
+  , "Corey"
+  , "Dakota"
+  , "Dallas"
+  , "Denver"
+  , "Drew"
+  , "Dylan"
+  , "Emerson"
+  , "Emerson"
+  , "Emery"
+  , "Finley"
+  , "Frankie"
+  , "Gray"
+  , "Greer"
+  , "Haven"
+  , "Hayden"
+  , "Indigo"
+  , "Jordan"
+  , "Justice"
+  , "Landry"
+  , "Lennon"
+  , "Lennox"
+  , "Marion"
+  , "Max"
+  , "Morgan"
+  , "Oakley"
+  , "Onyx"
+  , "Parker"
+  , "Peyton"
+  , "Phoenix"
+  , "Quinn"
+  , "Reese"
+  , "Riley"
+  , "River"
+  , "River"
+  , "Robin"
+  , "Rory"
+  , "Rowan"
+  , "Royal"
+  , "Ryan"
+  , "Sam"
+  , "Sawyer"
+  , "Shae"
+  , "Shiloh"
+  , "Skyler"
+  , "Spencer"
+  , "Stevie"
+  , "Story"
+  , "Sutton"
+  , "Tatum"
+  , "Tatum"
+  , "Tyler"
+  , "Zion"
+  ]
+
 last_name :: Array String
 last_name =
   [ "Abbott"
@@ -5727,7 +5800,6 @@ last_name =
   , "Friesen"
   , "Fritsch"
   , "Funk"
-  , "Gaylord"
   , "Gerhold"
   , "Gerlach"
   , "Gibson"
@@ -6089,6 +6161,16 @@ prefix =
   , "Ms."
   , "Miss"
   , "Dr."
+  , "Rev."
+  , "Fr."
+  , "Gov."
+  , "Rep."
+  , "Prof."
+  , "Sen."
+  , "The Hon."
+  , "Pres."
+  , "Msgr."
+  , "Amb."
   ]
 
 suffix :: Array String
@@ -6104,4 +6186,12 @@ suffix =
   , "DDS"
   , "PhD"
   , "DVM"
+  , "Esq."
+  , "CPA"
+  , "DC"
+  , "VM"
+  , "JD"
+  , "LLD"
+  , "Ret."
+  , "DO"
   ]

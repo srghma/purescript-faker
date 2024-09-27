@@ -29,6 +29,14 @@ newtype PromotionCodeNoun = PromotionCodeNoun String
 instance fakerPromotionCodeNoun :: Faker PromotionCodeNoun where
   fake = PromotionCodeNoun <$> sample promotion_code_noun
 
+newtype Brand = Brand String
+instance fakerBrand :: Faker Brand where
+  fake = Brand <$> sample brand
+
+newtype Vendor = Vendor String
+instance fakerVendor :: Faker Vendor where
+  fake = Vendor <$> sample vendor
+
 
 department :: Array String
 department =
@@ -147,4 +155,26 @@ promotion_code_noun =
   , "Promotion"
   , "Sale"
   , "Savings"
+  ]
+
+brand :: Array String
+brand =
+  [ "Samsung"
+  , "Dell"
+  , "Nike"
+  , "Apple"
+  , "LG"
+  , "Adidas"
+  , "Nikon"
+  , "Sony"
+  , "Beats"
+  , "GoPro"
+  ]
+
+vendor :: Array String
+vendor =
+  [ "Amazon"
+  , "Dollar General"
+  , "Walmart"
+  , "Target"
   ]

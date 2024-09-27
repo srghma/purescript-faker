@@ -14,6 +14,10 @@ newtype Secondary = Secondary String
 instance fakerSecondary :: Faker Secondary where
   fake = Secondary <$> sample secondary
 
+newtype Primary = Primary String
+instance fakerPrimary :: Faker Primary where
+  fake = Primary <$> sample primary
+
 newtype University = University String
 instance fakerUniversity :: Faker University where
   fake = do
@@ -27,6 +31,13 @@ instance fakerSecondarySchool :: Faker SecondarySchool where
     SchoolName v1 <- fake
     Secondary v2 <- fake
     pure $ SecondarySchool $ v1 <> " " <> v2
+
+newtype PrimarySchool = PrimarySchool String
+instance fakerPrimarySchool :: Faker PrimarySchool where
+  fake = do
+    SchoolName v1 <- fake
+    Primary v2 <- fake
+    pure $ PrimarySchool $ v1 <> " " <> v2
 
 newtype Campus = Campus String
 instance fakerCampus :: Faker Campus where
@@ -90,6 +101,13 @@ secondary =
   [ "High"
   , "High School"
   , "Secondary College"
+  ]
+
+primary :: Array String
+primary =
+  [ "Elementary School"
+  , "Grade School"
+  , "Primary School"
   ]
 
 subject :: Array String

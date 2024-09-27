@@ -17,7 +17,7 @@ instance fakerRooms :: Faker Rooms where
 furniture :: Array String
 furniture =
   [ "chair"
-  , "armchair\""
+  , "armchair"
   , "table"
   , "dining table"
   , "stool"

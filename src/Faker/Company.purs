@@ -53,6 +53,10 @@ newtype SicCode = SicCode String
 instance fakerSicCode :: Faker SicCode where
   fake = SicCode <$> sample sic_code
 
+newtype Department = Department String
+instance fakerDepartment :: Faker Department where
+  fake = Department <$> sample department
+
 
 suffix :: Array String
 suffix =
@@ -636,7 +640,7 @@ industry =
   , "Religious Institutions"
   , "Civic & Social Organization"
   , "Consumer Services"
-  , "Transportationg / Trucking / Railroad"
+  , "Transportation / Trucking / Railroad"
   , "Warehousing"
   , "Airlines / Aviation"
   , "Maritime"
@@ -747,7 +751,7 @@ profession =
   , "electrician"
   , "factory worker"
   , "farmer"
-  , "fiherman"
+  , "fisherman"
   , "gardener"
   , "hairdresser"
   , "journalist"
@@ -1800,4 +1804,32 @@ sic_code =
   , "9711"
   , "9721"
   , "9999"
+  ]
+
+department :: Array String
+department =
+  [ "Asset Management"
+  , "Board of Directors"
+  , "Business Development"
+  , "Corporate Communications"
+  , "Creative Services"
+  , "Customer Service"
+  , "Information Technology"
+  , "Engineering"
+  , "Finance / Accounting"
+  , "General Management"
+  , "Human Resources"
+  , "Investor Relations"
+  , "Legal"
+  , "Marketing"
+  , "Operations"
+  , "Product Management"
+  , "Production"
+  , "Project Management"
+  , "Purchasing / Sourcing"
+  , "Quality Assurance"
+  , "Risk Management"
+  , "Sales"
+  , "Strategic Initiatives"
+  , "Information Technology"
   ]

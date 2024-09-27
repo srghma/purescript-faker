@@ -5,6 +5,14 @@ import Prelude
 import Faker (class Faker, sample)
 
 
+newtype JackHandey = JackHandey String
+instance fakerJackHandey :: Faker JackHandey where
+  fake = JackHandey <$> sample jack_handey
+
+newtype MitchHedberg = MitchHedberg String
+instance fakerMitchHedberg :: Faker MitchHedberg where
+  fake = MitchHedberg <$> sample mitch_hedberg
+
 newtype FamousLastWords = FamousLastWords String
 instance fakerFamousLastWords :: Faker FamousLastWords where
   fake = FamousLastWords <$> sample famous_last_words
@@ -29,6 +37,110 @@ newtype Yoda = Yoda String
 instance fakerYoda :: Faker Yoda where
   fake = Yoda <$> sample yoda
 
+newtype FortuneCookie = FortuneCookie String
+instance fakerFortuneCookie :: Faker FortuneCookie where
+  fake = FortuneCookie <$> sample fortune_cookie
+
+
+jack_handey :: Array String
+jack_handey =
+  [ "When you die, if you get a choice between going to regular heaven or pie heaven, choose pie heaven. It might be a trick, but if it's not, mmmmmmmm, boy."
+  , "I'd rather be rich than stupid."
+  , "Whether they find life there or not, I think Jupiter should be called an enemy planet."
+  , "If you ever drop your keys into a river of molten lava, let 'em go, because man, they're gone."
+  , "Love can sweep you off your feet and carry you along in a way you've never known before. But the ride always ends, and you end up feeling lonely and bitter. Wait. It's not love I'm describing. I'm thinking of a monorail."
+  , "Ambition is like a frog sitting on a Venus Flytrap. The flytrap can bite and bite, but it won't bother the frog because it only has little tiny plant teeth. But some other stuff could happen and it could be like ambition."
+  , "It's interesting to think that my ancestors used to live in the trees, like apes, until finally they got the nerve to head out onto the plains, where some were probably hit by cars."
+  , "Instead of having \"answers\" on a math test, they should just call them \"impressions,\" and if you got a different \"impression,\" so what, can't we all be brothers?"
+  , "If they ever come up with a swashbuckling school, I think one of the courses should be laughing, then jumping off something."
+  , "I can't stand cheap people. It makes me real mad when someone says something like, \"Hey, when are you going to pay me that $100 you owe me?\" or \"Do you have that $50 you borrowed?\" Man, quit being so cheap!"
+  , "Sometimes I think you have to march right in and demand your rights, even if you don't know what your rights are, or who the person is you're talking to. Then on the way out, slam the door."
+  , "We tend to scoff at the beliefs of the ancients. But we can't scoff at them personally, to their faces, and this is what annoys me."
+  , "Somebody told me it was frightening how much topsoil we are losing each year, but I told that story around the campfire and nobody got scared."
+  , "The difference between a man and a boy is, a boy wants to grow up to be a fireman, but a man wants to grow up to be a giant monster fireman."
+  , "If any man says he hates war more than I do, he better have a knife, that's all I have to say."
+  , "If God dwells inside us like some people say, I sure hope He likes enchiladas, because that's what He's getting."
+  , "Sometimes life seems like a dream, especially when I look down and see that I forgot to put on my pants."
+  , "If you saw two guys named Hambone and Flippy, which one would you think liked dolphins most? I'd say Flippy, wouldn't you? You'd be wrong though. It's Hambone."
+  , "Instead of a trap door, what about a trap window? The guy looks out it, and if he leans too far, he falls out. Wait. I guess that's like a regular window."
+  , "When you go in for a job interview, I think a good thing to ask is if they ever press charges."
+  , "If you ever catch on fire, try to avoid looking in a mirror, because I bet that will really throw you into a panic."
+  , "One thing vampire children have to be taught early on is, never run with a wooden stake."
+  , "Laurie got offended that I used the word \"puke.\" But to me, that's what her dinner tasted like."
+  , "If you ever fall off the Sears Tower, just go real limp, because maybe you'll look like a dummy and people will try to catch you because, hey, free dummy."
+  , "When I was a kid my favorite relative was Uncle Caveman. After school we'd all go play in his cave, and every once in a while he would eat one of us. It wasn't until later that I found out that Uncle Caveman was a bear."
+  , "To me, it's a good idea to always carry two sacks of something when you walk around. That way, if anybody says, \"Hey, can you give me a hand?\" You can say, \"Sorry, got these sacks.\""
+  , "If you're robbing a bank and your pants fall down, I think it's okay to laugh and to let the hostages laugh too, because, come on, life is funny."
+  , "Whenever you read a good book, it's like the author is right there, in the room talking to you, which is why I don't like to read good books."
+  , "If you lose your job, your marriage and your mind all in one week, try to lose your mind first, because then the other stuff won't matter that much."
+  , "I wish I had a kryptonite cross, because then you could keep both Dracula and Superman away."
+  , "Instead of trying to build newer and bigger weapons of destruction, we should be thinking about getting more use out of the ones we already have."
+  , "Any man, in the right situation, is capable of murder. But not any man is capable of being a good camper. So, murder and camping are not as similar as you might think."
+  , "I hope life isn't a big joke, because I don't get it."
+  , "If I had a mine shaft, I don't think I would just abandon it. There's got to be a better way."
+  , "One thing a computer can do that most humans can't is be sealed up in a cardboard box and sit in a warehouse."
+  , "If trees could scream, would we be so cavalier about cutting them down? We might, if they screamed all the time, for no good reason."
+  , "Dad always thought laughter was the best medicine, which I guess is why several of us died of tuberculosis."
+  , "What is it that makes a complete stranger dive into an icy river to save a solid gold baby? Maybe we'll never know."
+  , "I hope that after I die, people will say of me, \"That guy sure owed me a lot of money.\""
+  , "I think the monkeys at the zoo should have to wear sunglasses so they can't hypnotize you."
+  , "I bet one legend that keeps recurring throughout history, in every culture, is the story of Popeye."
+  , "If you ever teach a yodeling class, probably the hardest thing is to keep the students from just trying to yodel right off. You see, we build to that."
+  , "To me, boxing is like a ballet, except there's no music, no choreography, and the dancers hit each other."
+  , "When I think of all the hours and hours of my life I have spent watching television, it makes me realize, Man, I am really rich with television."
+  , "Never laugh at a man, until you have walked a mile in his shoes; then you are a mile away, and you have his shoes."
+  , "Just as irrigation is the lifeblood of the Southwest, lifeblood is the soup of cannibals."
+  , "With every new sunrise, there is a new chance; but with every sunset, you blew it."
+  , "Many people don't realize that playing dead can help not only with bears, but also at important business meetings."
+  , "I bet a funny thing about driving a car off a cliff is, while you're in midair, you still hit those brakes. Hey, better try the emergency brake."
+  , "One day one of my little nephews came up to me and asked me if the equator was a real line that went around the Earth, or just an imaginary one. I had to laugh. Laugh and laugh. Because I didn't know, and I thought that maybe by laughing he would forget what he asked me."
+  ]
+
+mitch_hedberg :: Array String
+mitch_hedberg =
+  [ "An escalator can never break, it can only become stairs. You should never see an 'Escalator Temporarily Out Of Order' sign, just 'Escalator Temporarily Stairs. Sorry for the convenience'."
+  , "I'm sick of following my dreams. I'm just going to ask them where they're goin', and hook up with them later."
+  , "Is a hippopotamus a hippopotamus, or just a really cool Opotamus?"
+  , "I don't have a girlfriend. But I do know a woman who'd be mad at me for saying that."
+  , "I was at this casino minding my own business, and this guy came up to me and said, 'You're gonna have to move, you're blocking a fire exit.' As though if there was a fire, I wasn't gonna run. If you're flammible and have legs, you are never blocking a fire exit."
+  , "Rice is great if you're really hungry and want to eat two thousand of something."
+  , "My friend asked me if I wanted a frozen banana. I said 'No, but I want a regular banana later, so... yeah.'"
+  , "My belt holds my pants up, but the belt loops hold my belt up. I don't really know what's happening down there. Who is the real hero?"
+  , "I wanted to buy a candle holder, but the store didn't have one. So I got a cake."
+  , "I haven't slept for ten days, because that would be too long."
+  , "I like refried beans. That's why I wanna try fried beans, because maybe they're just as good and we're just wasting time."
+  , "Y'know, you can't please all the people all the time... and last night, all those people were at my show."
+  , "Fettucini alfredo is macaroni and cheese for adults."
+  , "I bought a seven-dollar pen because I always lose pens and I got sick of not caring."
+  , "I want to get a vending machine, with fun sized candy bars, and the glass in front is a magnifying glass. You'll be mad, but it will be too late."
+  , "This shirt is dry clean only. Which means it's dirty."
+  , "If carrots got you drunk, rabbits would be messed-up."
+  , "The depressing thing about tennis is that no matter how good I get, I'll never be as good as a wall."
+  , "I'm against picketing, but I don't know how to show it."
+  , "I like to play blackjack. I'm not addicted to gambling. I'm addicted to sitting in a semi-circle."
+  , "Every time I go and shave, I assume there's someone else on the planet shaving. So I say, 'I'm gonna go shave, too.'"
+  , "I recently took up ice sculpting. Last night I made an ice cube. This morning I made 12, I was prolific."
+  , "I would imagine that if you could understand Morse code, a tap dancer would drive you crazy."
+  , "I had a stick of CareFree gum, but it didn't work. I felt pretty good while I was blowing that bubble, but as soon as the gum lost its flavor, I was back to pondering my mortality."
+  , "I drank some boiling water because I wanted to whistle."
+  , "I like to hold the microphone cord like this, I pinch it together, then I let it go, then you hear a whole bunch of jokes at once."
+  , "My sister wanted to be an actress, but she never made it. She does live in a trailer. She got halfway. She's an actress, she just never gets called to the set."
+  , "I'd like to get four people who do cart wheels very good, and make a cart."
+  , "If my kid couldn't draw I'd make sure that my kitchen magnets didn't work."
+  , "I saw a human pyramid once. It was very unnecessary."
+  , "People teach their dogs to sit; it's a trick. I've been sitting my whole life, and a dog has never looked at me as though he thought I was tricky."
+  , "I wish my name was Brian because maybe sometimes people would misspell my name and call me Brain. That's like a free compliment and you don't even gotta be smart to notice it."
+  , "It's very dangerous to wave to people you don't know because what if they don't have hands? They'll think you're cocky."
+  , "I like Kit-Kats, unless I'm with four or more people."
+  , "Dogs are forever in the push up postion."
+  , "I wish I could play little league now. I'd be way better than before."
+  , "When someone hands you a flyer, it's like they're saying here you throw this away."
+  , "I once saw a forklift lift a crate of forks. And it was way to literal for me."
+  , "Every book is a children's book if the kid can read."
+  , "I'm a heroine addict. I need to have sex with women who have saved someone's life."
+  , "I wear a necklace, cause I wanna know when I'm upside down."
+  , "You know when they have a fishing show on TV? They catch the fish and then let it go. They don't want to eat the fish, they just want to make it late for something."
+  ]
 
 famous_last_words :: Array String
 famous_last_words =
@@ -642,5 +754,17 @@ yoda =
   , "Reckless he is. Matters are worse."
   , "That is why you fail."
   , "Your weapons, you will not need them."
-  , "To answer power with power, the Jedi way this is not. In this war, a danger there is, of losing who we are."
+  , "To answer power with power, the Jedi way this is"
+  ]
+
+fortune_cookie :: Array String
+fortune_cookie =
+  [ "This cookie senses that you are superstitious; it is an inclination that is bad for your mental health."
+  , "Goodness comes to those who wait."
+  , "Two wrongs do not make a right."
+  , "A rolling stone gathers no moss."
+  , "Destiny is what you choose it to be; fate is what happens when you relinquish your freedom"
+  , "Failure is fuel for victory"
+  , "A black cat is not bad luck for a blind man."
+  , "To hesitate is to be lost."
   ]

@@ -48,6 +48,7 @@ teams =
   , "Galatasaray"
   , "PSV Eindhoven"
   , "LA Galaxy"
+  , "Paris Saint Germain"
   ]
 
 players :: Array String
@@ -83,6 +84,7 @@ players =
   , "Gareth Bale"
   , "Eden Hazard"
   , "Mario Mandzukic"
+  , "Kylian Mbappe"
   ]
 
 coaches :: Array String
@@ -105,6 +107,7 @@ coaches =
   , "Mauricio Pochettino"
   , "Unai Emery"
   , "Massimiliano Allegri"
+  , "Thomas Tuchel"
   ]
 
 competitions :: Array String

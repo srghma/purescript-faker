@@ -17,9 +17,17 @@ newtype NavyRank = NavyRank String
 instance fakerNavyRank :: Faker NavyRank where
   fake = NavyRank <$> sample navy_rank
 
+newtype CoastGuardRank = CoastGuardRank String
+instance fakerCoastGuardRank :: Faker CoastGuardRank where
+  fake = CoastGuardRank <$> sample coast_guard_rank
+
 newtype AirForceRank = AirForceRank String
 instance fakerAirForceRank :: Faker AirForceRank where
   fake = AirForceRank <$> sample air_force_rank
+
+newtype SpaceForceRank = SpaceForceRank String
+instance fakerSpaceForceRank :: Faker SpaceForceRank where
+  fake = SpaceForceRank <$> sample space_force_rank
 
 newtype DodPaygrade = DodPaygrade String
 instance fakerDodPaygrade :: Faker DodPaygrade where
@@ -98,12 +106,40 @@ navy_rank =
   , "Petty Officer Second Class"
   , "Petty Officer First Class"
   , "Chief Petty Officer"
-  , "Senior Petty Officer"
-  , "Master Chief Petty Officer"
+  , "Senior Chief Petty Officer"
   , "Command Senior Chief Petty Officer"
+  , "Master Chief Petty Officer"
   , "Command Master Chief Petty Officer"
   , "Fleet Master Chief Petty Officer"
+  , "Force Master Chief Petty Officer"
   , "Master Chief Petty Officer of the Navy"
+  , "Ensign"
+  , "Lieutenant"
+  , "Lieutenant Commander"
+  , "Commander"
+  , "Captain"
+  , "Rear Admiral"
+  , "Vice Admiral"
+  , "Admiral"
+  , "Fleet Admiral"
+  , "Admiral of the Navy"
+  ]
+
+coast_guard_rank :: Array String
+coast_guard_rank =
+  [ "Seaman Recruit"
+  , "Seaman Apprentice"
+  , "Seaman"
+  , "Petty Officer Third Class"
+  , "Petty Officer Second Class"
+  , "Petty Officer First Class"
+  , "Chief Petty Officer"
+  , "Senior Chief Petty Officer"
+  , "Master Chief Petty Officer"
+  , "Command Master Chief Petty Officer"
+  , "Area Command Master Chief Petty Officer"
+  , "Coast Guard Reserve Force Master Chief Petty Officer"
+  , "Master Chief Petty Officer of the Coast Guard"
   , "Ensign"
   , "Lieutenant"
   , "Lieutenant Commander"
@@ -141,6 +177,31 @@ air_force_rank =
   , "General of the Air Force"
   ]
 
+space_force_rank :: Array String
+space_force_rank =
+  [ "Airman Basic"
+  , "Airman First Class"
+  , "Senior Airman"
+  , "Staff Sergeant"
+  , "Technical Sergeant"
+  , "Master Sergeant"
+  , "Senior Master Sergeant"
+  , "Chief Master Sergeant"
+  , "Command Chief Master Sergeant"
+  , "Senior Enlisted Advisor of the Space Force"
+  , "Senior Enlisted Advisor to the Chairman"
+  , "Second Lieutenant"
+  , "First Lieutenant"
+  , "Captain"
+  , "Major"
+  , "Lieutenant Colonel"
+  , "Colonel"
+  , "Brigadier General"
+  , "Major General"
+  , "Lieutenant General"
+  , "General"
+  ]
+
 dod_paygrade :: Array String
 dod_paygrade =
   [ "E-1"
@@ -153,8 +214,11 @@ dod_paygrade =
   , "E-8"
   , "E-9"
   , "O-1"
+  , "O-1E"
   , "O-2"
+  , "O-2E"
   , "O-3"
+  , "O-3E"
   , "O-4"
   , "O-5"
   , "O-6"
@@ -162,5 +226,10 @@ dod_paygrade =
   , "O-8"
   , "O-9"
   , "O-10"
+  , "W-1"
+  , "W-2"
+  , "W-3"
+  , "W-4"
+  , "W-5"
   , "Special"
   ]

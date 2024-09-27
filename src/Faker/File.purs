@@ -9,9 +9,37 @@ newtype Extension = Extension String
 instance fakerExtension :: Faker Extension where
   fake = Extension <$> sample extension
 
-newtype MimeType = MimeType String
-instance fakerMimeType :: Faker MimeType where
-  fake = MimeType <$> sample mime_type
+newtype MimeTypeApplication = MimeTypeApplication String
+instance fakerMimeTypeApplication :: Faker MimeTypeApplication where
+  fake = MimeTypeApplication <$> sample mime_type_application
+
+newtype MimeTypeAudio = MimeTypeAudio String
+instance fakerMimeTypeAudio :: Faker MimeTypeAudio where
+  fake = MimeTypeAudio <$> sample mime_type_audio
+
+newtype MimeTypeImage = MimeTypeImage String
+instance fakerMimeTypeImage :: Faker MimeTypeImage where
+  fake = MimeTypeImage <$> sample mime_type_image
+
+newtype MimeTypeMessage = MimeTypeMessage String
+instance fakerMimeTypeMessage :: Faker MimeTypeMessage where
+  fake = MimeTypeMessage <$> sample mime_type_message
+
+newtype MimeTypeModel = MimeTypeModel String
+instance fakerMimeTypeModel :: Faker MimeTypeModel where
+  fake = MimeTypeModel <$> sample mime_type_model
+
+newtype MimeTypeMultipart = MimeTypeMultipart String
+instance fakerMimeTypeMultipart :: Faker MimeTypeMultipart where
+  fake = MimeTypeMultipart <$> sample mime_type_multipart
+
+newtype MimeTypeText = MimeTypeText String
+instance fakerMimeTypeText :: Faker MimeTypeText where
+  fake = MimeTypeText <$> sample mime_type_text
+
+newtype MimeTypeVideo = MimeTypeVideo String
+instance fakerMimeTypeVideo :: Faker MimeTypeVideo where
+  fake = MimeTypeVideo <$> sample mime_type_video
 
 
 extension :: Array String
@@ -50,8 +78,8 @@ extension =
   , "pdf"
   ]
 
-mime_type :: Array String
-mime_type =
+mime_type_application :: Array String
+mime_type_application =
   [ "application/atom+xml"
   , "application/ecmascript"
   , "application/EDI-X12"
@@ -70,7 +98,11 @@ mime_type =
   , "application/xop+xml"
   , "application/zip"
   , "application/gzip"
-  , "audio/basic"
+  ]
+
+mime_type_audio :: Array String
+mime_type_audio =
+  [ "audio/basic"
   , "audio/L24"
   , "audio/mp4"
   , "audio/mpeg"
@@ -79,31 +111,51 @@ mime_type =
   , "audio/vnd.rn-realaudio"
   , "audio/vnd.wave"
   , "audio/webm"
-  , "image/gif"
+  ]
+
+mime_type_image :: Array String
+mime_type_image =
+  [ "image/gif"
   , "image/jpeg"
   , "image/pjpeg"
   , "image/png"
   , "image/svg+xml"
   , "image/tiff"
   , "image/vnd.microsoft.icon"
-  , "message/http"
+  ]
+
+mime_type_message :: Array String
+mime_type_message =
+  [ "message/http"
   , "message/imdn+xml"
   , "message/partial"
   , "message/rfc822"
-  , "model/example"
+  ]
+
+mime_type_model :: Array String
+mime_type_model =
+  [ "model/example"
   , "model/iges"
   , "model/mesh"
   , "model/vrml"
   , "model/x3d+binary"
   , "model/x3d+vrml"
   , "model/x3d+xml"
-  , "multipart/mixed"
+  ]
+
+mime_type_multipart :: Array String
+mime_type_multipart =
+  [ "multipart/mixed"
   , "multipart/alternative"
   , "multipart/related"
   , "multipart/form-data"
   , "multipart/signed"
   , "multipart/encrypted"
-  , "text/cmd"
+  ]
+
+mime_type_text :: Array String
+mime_type_text =
+  [ "text/cmd"
   , "text/css"
   , "text/csv"
   , "text/html"
@@ -111,7 +163,11 @@ mime_type =
   , "text/plain"
   , "text/vcard"
   , "text/xml"
-  , "video/mpeg"
+  ]
+
+mime_type_video :: Array String
+mime_type_video =
+  [ "video/mpeg"
   , "video/mp4"
   , "video/ogg"
   , "video/quicktime"

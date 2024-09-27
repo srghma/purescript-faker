@@ -17,6 +17,10 @@ newtype Planets = Planets String
 instance fakerPlanets :: Faker Planets where
   fake = Planets <$> sample planets
 
+newtype Cities = Cities String
+instance fakerCities :: Faker Cities where
+  fake = Cities <$> sample cities
+
 newtype QuotesGuildNavigator = QuotesGuildNavigator String
 instance fakerQuotesGuildNavigator :: Faker QuotesGuildNavigator where
   fake = QuotesGuildNavigator <$> sample quotes_guild_navigator
@@ -191,8 +195,63 @@ planets =
   , "Ix"
   , "Selusa Secundus"
   , "Kaitain"
-  , "Richesse"
   , "Ecaz"
+  , "III Delta Kaising"
+  , "IV Anbus"
+  , "Al Dhanab"
+  , "Bela Tegeuse"
+  , "Buzzell"
+  , "Chapterhouse"
+  , "Chusuk"
+  , "Corrin"
+  , "Gamont"
+  , "Gansireed"
+  , "Gangishree"
+  , "Ginaz"
+  , "Grumman"
+  , "Hagal"
+  , "Harmonthep"
+  , "Ipyr"
+  , "Junction"
+  , "Kolhar"
+  , "Lampadas"
+  , "Lankiveil"
+  , "Lernaeus"
+  , "Muritan"
+  , "Naraj"
+  , "Palma"
+  , "Parmentier"
+  , "Poritrin"
+  , "Romo"
+  , "Rossak"
+  , "Sikun"
+  , "Synchrony"
+  , "Tleilax"
+  , "Tupile"
+  ]
+
+cities :: Array String
+cities =
+  [ "Arrakeen"
+  , "Bandalong"
+  , "Barony"
+  , "Byzantium"
+  , "Cala City"
+  , "Carthag"
+  , "City of Introspection"
+  , "Comati"
+  , "Corrinth City"
+  , "Dar-es-Balat"
+  , "Elacca"
+  , "Giedi City"
+  , "Harko"
+  , "Niubbe"
+  , "Ritka"
+  , "Starda"
+  , "Thalidei"
+  , "Vernii"
+  , "Ysai"
+  , "Zimia"
   ]
 
 quotes_guild_navigator :: Array String
@@ -413,4 +472,18 @@ sayings_orange_catholic_bible =
   , "When God hath ordained a creature to die in a particular place, He causeth that creature's wants to direct him to that place"
   , "Thou shalt not make a machine in the likeness of a man's mind"
   , "From water does all life begin."
+  , "...and on the seventh day He rested."
+  , "Thou shall not suffer a witch to live."
+  , "The meek shall inherit the universe."
+  , "Men, finding no answers to the sunnan [the ten thousand religious questions from the Shari-ah] now apply their own reasoning. All men seek to be enlightened. Religion is but the most ancient and honorable way in which men have striven to make sense out of God's universe. Scientists seek the lawfulness of events. It is the task of Religion to fit man into this lawfulness."
+  , "When law and religious duty are one, your selfdom encloses the universe."
+  , "Thou shalt not disfigure the soul."
+  , "Religion often partakes of the myth of progress that shields us from the terrors of an uncertain future."
+  , "The Universe is God's. It is one thing, a wholeness against which all separations may be identified. Transient life, even that self-aware and reasoning life which we call sentient, holds only fragile trusteeship on any portion of the wholeness."
+  , "Much that was called religion has carried an unconscious attitude of hostility toward life. True religion must teach that life is filled with joys pleasing to the eye of God, that knowledge without action is empty. All men must see that the teaching of religion by rules and rote is largely a hoax. The proper teaching is recognized with ease. You can know it without fail because it awakens within you that sensation which tells you this is something you've always known."
+  , "Paradise on my right, Hell on my left and the Angel of Death behind."
+  , "Some Lies are easier to believe than the truth."
+  , "Knowledge is pitiless."
+  , "Fate and Hope only rarely speak the same language."
+  , "Beware the seeds you sow and the crops you reap. Do not curse God for the punishment you inflict upon yourself."
   ]

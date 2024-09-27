@@ -9,9 +9,9 @@ newtype Battlegrounds = Battlegrounds String
 instance fakerBattlegrounds :: Faker Battlegrounds where
   fake = Battlegrounds <$> sample battlegrounds
 
-newtype Classes = Classes String
-instance fakerClasses :: Faker Classes where
-  fake = Classes <$> sample classes
+newtype ClassNames = ClassNames String
+instance fakerClassNames :: Faker ClassNames where
+  fake = ClassNames <$> sample class_names
 
 newtype Heroes = Heroes String
 instance fakerHeroes :: Faker Heroes where
@@ -41,8 +41,8 @@ battlegrounds =
   , "Warhead Junction"
   ]
 
-classes :: Array String
-classes =
+class_names :: Array String
+class_names =
   [ "Bruiser"
   , "Healer"
   , "Melee Assassin"
@@ -143,7 +143,7 @@ heroes =
 quotes :: Array String
 quotes =
   [ "Beat them like they owe you money!"
-  , "Careful wizard, your kind has upset the balance beforeo I become re-dead? Deader? ... Alive?\""
+  , "Careful wizard, your kind has upset the balance beforeo I become re-dead? Deader? ... Alive?"
   , "Don't forget to check the pocket!"
   , "Have you ever considered aiming anywhere other than the face?"
   , "Hey, you look like the cover of E.T.C.s new album!"
@@ -153,7 +153,7 @@ quotes =
   , "Mrgrgrlrgrlgr!!!"
   , "Oh my God, I can't believe I just killed a panda."
   , "Taunting life form; you are weak! And physically unappealing!"
-  , "Teammates. Much to improve.\" is a pretty good contender."
+  , "Teammates. Much to improve. is a pretty good contender."
   , "That was easy! You were easy to kill!"
   , "This will only hurt until you die."
   , "Ugh, I've known much better healers."

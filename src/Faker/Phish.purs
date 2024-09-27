@@ -5,13 +5,48 @@ import Prelude
 import Faker (class Faker, sample)
 
 
-newtype Song = Song String
-instance fakerSong :: Faker Song where
-  fake = Song <$> sample song
+newtype Albums = Albums String
+instance fakerAlbums :: Faker Albums where
+  fake = Albums <$> sample albums
+
+newtype Musicians = Musicians String
+instance fakerMusicians :: Faker Musicians where
+  fake = Musicians <$> sample musicians
+
+newtype Songs = Songs String
+instance fakerSongs :: Faker Songs where
+  fake = Songs <$> sample songs
 
 
-song :: Array String
-song =
+albums :: Array String
+albums =
+  [ "Junta"
+  , "Lawn Boy"
+  , "A Picture of Nectar"
+  , "Rift"
+  , "Hoist"
+  , "Billy Breathes"
+  , "The Story of the Ghost"
+  , "The Siket Disc"
+  , "Farmhouse"
+  , "Round Room"
+  , "Undermind"
+  , "Joy"
+  , "Fuego"
+  , "Big Boat"
+  , "Sigma Oasis"
+  ]
+
+musicians :: Array String
+musicians =
+  [ "Jon Fishman"
+  , "Mike Gordon"
+  , "Page McConnell"
+  , "Trey Anastasio"
+  ]
+
+songs :: Array String
+songs =
   [ "A Song I Heard the Ocean Sing"
   , "AC/DC Bag"
   , "Access Me"
@@ -211,7 +246,7 @@ song =
   , "Montana"
   , "More"
   , "Mound"
-  , "My Friend, My Friend"
+  , "My Friend - My Friend"
   , "My Left Toe"
   , "My Problem Right There"
   , "My Sweet One"

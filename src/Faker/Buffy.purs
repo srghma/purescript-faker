@@ -13,9 +13,9 @@ newtype Quotes = Quotes String
 instance fakerQuotes :: Faker Quotes where
   fake = Quotes <$> sample quotes
 
-newtype Celebrities = Celebrities String
-instance fakerCelebrities :: Faker Celebrities where
-  fake = Celebrities <$> sample celebrities
+newtype Actors = Actors String
+instance fakerActors :: Faker Actors where
+  fake = Actors <$> sample actors
 
 newtype BigBads = BigBads String
 instance fakerBigBads :: Faker BigBads where
@@ -93,8 +93,8 @@ quotes =
   , "And I wonder what possible catastrophe came crashing down from heaven and brought this dashing stranger to tears?"
   ]
 
-celebrities :: Array String
-celebrities =
+actors :: Array String
+actors =
   [ "Sarah Michelle Geller"
   , "Alyson Hannigan"
   , "David Boreanaz"

@@ -25,9 +25,9 @@ newtype Quotes = Quotes String
 instance fakerQuotes :: Faker Quotes where
   fake = Quotes <$> sample quotes
 
-newtype AkumasNoMi = AkumasNoMi String
-instance fakerAkumasNoMi :: Faker AkumasNoMi where
-  fake = AkumasNoMi <$> sample akumas_no_mi
+newtype AkumaNoMi = AkumaNoMi String
+instance fakerAkumaNoMi :: Faker AkumaNoMi where
+  fake = AkumaNoMi <$> sample akuma_no_mi
 
 
 characters :: Array String
@@ -338,8 +338,8 @@ quotes =
   , "I don't wanna live a thousand years. If I just live through today, that'll be enough."
   ]
 
-akumas_no_mi :: Array String
-akumas_no_mi =
+akuma_no_mi :: Array String
+akuma_no_mi =
   [ "Gomu Gomu no Mi"
   , "Hana Hana no Mi"
   , "Doru Doru no Mi"

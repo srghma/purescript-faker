@@ -6,9 +6,9 @@ import Effect.Random (randomInt)
 import Faker (class Faker, fake, sample)
 
 
-newtype Manufacture = Manufacture String
-instance fakerManufacture :: Faker Manufacture where
-  fake = Manufacture <$> sample manufacture
+newtype Manufacturer = Manufacturer String
+instance fakerManufacturer :: Faker Manufacturer where
+  fake = Manufacturer <$> sample manufacturer
 
 newtype Makes = Makes String
 instance fakerMakes :: Faker Makes where
@@ -183,9 +183,13 @@ newtype LicensePlateByStateWy = LicensePlateByStateWy String
 instance fakerLicensePlateByStateWy :: Faker LicensePlateByStateWy where
   fake = LicensePlateByStateWy <$> sample license_plate_by_state_WY
 
+newtype Version = Version String
+instance fakerVersion :: Faker Version where
+  fake = Version <$> sample version
 
-manufacture :: Array String
-manufacture =
+
+manufacturer :: Array String
+manufacturer =
   [ "Abarth"
   , "Acura"
   , "Aixam"
@@ -2982,4 +2986,89 @@ license_plate_by_state_WY =
   , "MC###"
   , "MM###"
   , "NA###"
+  ]
+
+version :: Array String
+version =
+  [ "Premium"
+  , "Quadrifoglio"
+  , "Ti"
+  , "Sprint"
+  , "Prestige"
+  , "40 TFSI Premium"
+  , "45 TFSI Premium Plus"
+  , "228i Gran Coupe"
+  , "230i"
+  , "330e"
+  , "330i"
+  , "330i xDrive"
+  , "430i"
+  , "Competition"
+  , "sDrive 30i"
+  , "Avenir"
+  , "Essence"
+  , "Luxury"
+  , "Sport"
+  , "Sport Premium"
+  , "2LT"
+  , "3LT"
+  , "Premier"
+  , "Stingray"
+  , "LS"
+  , "LT"
+  , "LTZ"
+  , "300s V6"
+  , "300s V8"
+  , "2.5 Turbo"
+  , "1.0"
+  , "1.8"
+  , "2.0"
+  , "2.0L Inline-4"
+  , "Freestyle 1.5 12V AT6"
+  , "GLi 2.0 16V CVT"
+  , "Altis 2.0 16V"
+  , "Altis Hybrid 1.8 16V CVT"
+  , "XEi 2.0 16v CVT"
+  , "Classic Spirit 1.6"
+  , "1.8Mi"
+  , "LTZ 1.4"
+  , "SS 6.2 V8"
+  , "1.0 Turbo"
+  , "MAXX 1.4 8V"
+  , "RS 1.0 TB"
+  , "1.6 MSI 16V"
+  , "G6 1.6 8V"
+  , "G6 1.0 12V"
+  , "G6 1.0 12V"
+  , "Plus 1.0 16V"
+  , "Longitude 3.2 V6"
+  , "Trailhawk 3.2 V6"
+  , "Limited T270 1.3 TB"
+  , "Overland TD380 4X4 2.0 16V"
+  , "Sahara 2.0 TB"
+  , "Unlimited Rubicon 4X4 2.0 TB AT8"
+  , "Iconic 1.3 16V TCe CVT X-TRONIX"
+  , "Zen 1.3 16V CVT X-TRONIC"
+  , "Limited 3.6 V6 4X4"
+  , "T-JET 1.4 16V"
+  , "LOUNGE 1.4 DUALOGIC"
+  , "Drive 1.0"
+  , "Trekking 1.3 8V"
+  , "Easy 1.0 8V"
+  , "Like 1.0 8V"
+  , "Fire 1.0 8V"
+  , "Essence 1.6V"
+  , "Audace 200 1.0 TB"
+  , "Comfortline 200 1.0 12V TSI AT6"
+  , "Highline 200 1.0 12V TSI AT6"
+  , "200 TSI"
+  , "Sense 200 1.0 TSI AT6"
+  , "Touring 1.5 TB CVT"
+  , "Momentum T5 AWD 2.0 TB AT8 "
+  , "200 Advance 1.3 TB"
+  , "EX 2.0 CVT"
+  , "LX 2.0 CVT"
+  , "Sport 2.0 CVT"
+  , "TXS 1.5 TB AT"
+  , "Premier 1.2 TB"
   ]

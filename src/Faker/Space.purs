@@ -260,7 +260,7 @@ nasa_space_craft =
 company :: Array String
 company =
   [ "Rocket Lab"
-  , "SpaceX'"
+  , "SpaceX"
   , "Blue Origin"
   , "Virgin Galactic"
   , "SpaceDev"

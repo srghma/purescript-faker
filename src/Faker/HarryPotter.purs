@@ -258,7 +258,7 @@ locations =
   , "Shell Cottage"
   , "Sinner's End"
   , "Beauxbatons"
-  , "Castlelobruxo"
+  , "Castelobruxo"
   , "Durmstrang"
   , "Hogwarts"
   , "Ilvermorny"
